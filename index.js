@@ -10,10 +10,13 @@ require("dotenv").config();
 
 // cleaning-services-project-firebase-adminsdk.json;
 
-const serviceAccount = require("./cleaning-services-project-firebase-adminsdk.json");
+// const serviceAccount = require("./cleaning-services-project-firebase-adminsdk.json");
 
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+// });
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.applicationDefault(),
 });
 
 app.use(cors());
@@ -46,6 +49,7 @@ async function run() {
     const orderCollection = database.collection("orders");
     const testimonialCollection = database.collection("testimonials");
     const userCollection = database.collection("users");
+    console.log("connected");
 
     // service
     // get services
